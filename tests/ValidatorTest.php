@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Alligator\Tests;
 
+use Alligator\Interfaces\ArraySchemaInterface;
 use Alligator\Interfaces\NumberSchemaInterface;
 use Alligator\Interfaces\StringSchemaInterface;
 use Alligator\Validator;
@@ -81,5 +82,21 @@ class ValidatorTest extends TestCase
         $this->assertTrue($schema2->isValid(-4));
         $this->assertFalse($schema2->isValid(-5));
         $this->assertFalse($schema2->isValid(10));
+    }
+
+    public function testArray(): void
+    {
+        $schema = $this->validator->array();
+
+        $this->assertInstanceOf(ArraySchemaInterface::class, $schema);
+
+        $this->assertTrue($schema->isValid());
+        $schema->required();
+        $this->assertFalse($schema->isValid());
+        $this->assertTrue($schema->isValid([]));
+        $this->assertTrue($schema->isValid(['alligator']));
+        $schema->sizeof(2);
+        $this->assertFalse($schema->isValid(['alligator']));
+        $this->assertTrue($schema->isValid(['alligator', 'codding']));
     }
 }

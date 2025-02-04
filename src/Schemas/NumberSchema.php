@@ -10,7 +10,7 @@ class NumberSchema extends Schema implements NumberSchemaInterface
 {
     public function required(): static
     {
-        $this->rules['required'] = fn($value) => !is_null($value);
+        $this->rules['required'] = fn($value) => is_int($value);
         return $this;
     }
 
@@ -32,7 +32,7 @@ class NumberSchema extends Schema implements NumberSchemaInterface
      */
     public function isValid(mixed $content = null): bool
     {
-        $value = !is_null($content) ? (int)$content : null;
+        $value = is_int($content) ? $content : null;
         return parent::isValid($value);
     }
 }
