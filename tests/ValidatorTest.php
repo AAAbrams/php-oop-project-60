@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Alligator\Tests;
 
-use Alligator\Interfaces\ArraySchemaInterface;
-use Alligator\Interfaces\NumberSchemaInterface;
-use Alligator\Interfaces\StringSchemaInterface;
+use Alligator\Schemas\ArraySchema;
+use Alligator\Schemas\NumberSchema;
+use Alligator\Schemas\StringSchema;
 use Alligator\Validator;
 use PHPUnit\Framework\TestCase;
 
@@ -25,7 +25,7 @@ class ValidatorTest extends TestCase
         $schema = $this->validator->string();
         $schema2 = $this->validator->string();
 
-        $this->assertInstanceOf(StringSchemaInterface::class, $schema);
+        $this->assertInstanceOf(StringSchema::class, $schema);
         $this->assertTrue($schema->isValid());
         $schema->required();
         $this->assertFalse($schema->isValid());
@@ -52,7 +52,7 @@ class ValidatorTest extends TestCase
     {
         $schema = $this->validator->number();
 
-        $this->assertInstanceOf(NumberSchemaInterface::class, $schema);
+        $this->assertInstanceOf(NumberSchema::class, $schema);
 
         $this->assertTrue($schema->isValid());
         $schema->required();
@@ -88,7 +88,7 @@ class ValidatorTest extends TestCase
     {
         $schema = $this->validator->array();
 
-        $this->assertInstanceOf(ArraySchemaInterface::class, $schema);
+        $this->assertInstanceOf(ArraySchema::class, $schema);
 
         $this->assertTrue($schema->isValid());
         $schema->required();

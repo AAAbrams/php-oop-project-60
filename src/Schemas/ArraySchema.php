@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace Alligator\Schemas;
 
-use Alligator\Interfaces\ArraySchemaInterface;
-
-class ArraySchema extends Schema implements ArraySchemaInterface
+class ArraySchema extends Schema
 {
-
     public function required(): static
     {
         $this->rules['required'] = fn($value) => is_array($value);
@@ -22,7 +19,7 @@ class ArraySchema extends Schema implements ArraySchemaInterface
     }
 
     /**
-     * @param ?array $content
+     * @param ?mixed[] $content
      * @return bool
      */
     public function isValid(mixed $content = null): bool
@@ -30,5 +27,4 @@ class ArraySchema extends Schema implements ArraySchemaInterface
         $value = is_array($content) ? $content : null;
         return parent::isValid($value);
     }
-
 }

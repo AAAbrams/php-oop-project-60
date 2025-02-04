@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Alligator\Schemas;
 
-use Alligator\Interfaces\NumberSchemaInterface;
-
-class NumberSchema extends Schema implements NumberSchemaInterface
+class NumberSchema extends Schema
 {
     public function required(): static
     {

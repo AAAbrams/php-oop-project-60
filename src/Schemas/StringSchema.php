@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Alligator\Schemas;
 
-use Alligator\Interfaces\StringSchemaInterface;
-
-class StringSchema extends Schema implements StringSchemaInterface
+class StringSchema extends Schema
 {
     public function required(): static
     {
