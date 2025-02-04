@@ -11,7 +11,12 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Alligator\\": "src/"
+            "Alligator\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Alligator\\Tests\\": "tests"
         }
     },
     "authors": [

@@ -2,7 +2,10 @@
 
 declare(strict_types=1);
 
-use Alligator\Schemas\SchemaInterface;
+namespace Alligator\Tests;
+
+use Alligator\Interfaces\NumberSchemaInterface;
+use Alligator\Interfaces\StringSchemaInterface;
 use Alligator\Validator;
 use PHPUnit\Framework\TestCase;
 
@@ -15,13 +18,13 @@ class ValidatorTest extends TestCase
         $this->validator = new Validator();
     }
 
-    public function testString()
+    public function testString(): void
     {
-        
+
         $schema = $this->validator->string();
         $schema2 = $this->validator->string();
 
-        $this->assertInstanceOf(SchemaInterface::class, $schema);
+        $this->assertInstanceOf(StringSchemaInterface::class, $schema);
         $this->assertTrue($schema->isValid());
         $schema->required();
         $this->assertFalse($schema->isValid());
@@ -42,5 +45,41 @@ class ValidatorTest extends TestCase
                 ->minLength(5)
                 ->isValid('Hexlet')
         );
+    }
+
+    public function testNumber(): void
+    {
+        $schema = $this->validator->number();
+
+        $this->assertInstanceOf(NumberSchemaInterface::class, $schema);
+
+        $this->assertTrue($schema->isValid());
+        $schema->required();
+        $this->assertFalse($schema->isValid());
+        $this->assertTrue($schema->isValid(7));
+
+        $this->assertTrue(
+            $schema->positive()->isValid(10)
+        );
+
+        $schema->range(-5, 5);
+
+        $this->assertFalse(
+            $schema->isValid(-3)
+        );
+
+        $this->assertTrue(
+            $schema->isValid(5)
+        );
+
+        $schema2 = $this->validator
+            ->number()
+            ->range(-4, 4);
+
+        $this->assertTrue($schema2->isValid(0));
+        $this->assertTrue($schema2->isValid(3));
+        $this->assertTrue($schema2->isValid(-4));
+        $this->assertFalse($schema2->isValid(-5));
+        $this->assertFalse($schema2->isValid(10));
     }
 }
