@@ -11,11 +11,6 @@ class StringSchema implements SchemaInterface
      */
     private array $rules = [];
 
-    public function __construct(array $options = [])
-    {
-        $this->dispatchOptionsToRules($options);
-    }
-
     public function required(): static
     {
         $this->rules['req'] = fn(string $value): bool => !empty($value);
@@ -41,28 +36,5 @@ class StringSchema implements SchemaInterface
         $test = array_filter($this->rules, fn(callable $rule) => !$rule($value));
 
         return empty($test);
-    }
-
-    private function dispatchOptionsToRules(array $rules): void
-    {
-        foreach ($rules as $rule => $condition) {
-            switch ($rule) {
-                case 'req':
-                    if ($condition)
-                        $this->required();
-                    continue 2;
-                case  'ml':
-                    if ((int)$condition)
-                        $this->minLength($condition);
-                    continue 2;
-                case 'cont':
-                    if (!empty($condition))
-                        $this->contains($condition);
-                    continue 2;
-                default:
-                    continue 2;
-
-            }
-        }
     }
 }

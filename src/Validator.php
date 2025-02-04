@@ -9,8 +9,8 @@ use Alligator\Schemas\StringSchema;
 
 class Validator
 {
-    public function string(array $options = []): SchemaInterface
+    public function string(): SchemaInterface
     {
-        return new StringSchema($options);
+        return new StringSchema();
     }
 }

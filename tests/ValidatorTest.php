@@ -43,15 +43,4 @@ class ValidatorTest extends TestCase
                 ->isValid('Hexlet')
         );
     }
-
-    public function testStringOptions()
-    {
-        $this->assertTrue(
-            $this->validator->string([
-                'req' => true,
-                'ml' => 18,
-                'cont' => 'fox'
-            ])->isValid('what does the fox say')
-        );
-    }
 }

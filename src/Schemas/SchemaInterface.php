@@ -6,11 +6,6 @@ namespace Alligator\Schemas;
 
 interface SchemaInterface
 {
-    /**
-     * @param list<string> $options
-     */
-    public function __construct(array $options = []);
-
     public function required(): static;
 
     public function minLength(int $length): static;
