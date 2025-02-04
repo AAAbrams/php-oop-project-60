@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Alligator\Schemas;
 
+use Alligator\Verifications\ArrayShapeVerification;
+
 class ArraySchema extends Schema
 {
     public function required(): static
@@ -19,12 +21,23 @@ class ArraySchema extends Schema
     }
 
     /**
+     * @param array<string, Schema> $shapeRules
+     * @return $this
+     */
+    public function shape(array $shapeRules): static
+    {
+        $this->verification = ArrayShapeVerification::class;
+        $this->rules = $shapeRules;
+        return $this;
+    }
+
+    /**
      * @param ?mixed[] $content
      * @return bool
      */
-    public function isValid(mixed $content = null): bool
+    public function isValid(?array $content = null): bool
     {
-        $value = is_array($content) ? $content : null;
-        return parent::isValid($value);
+        $handler = $this->verification::getVerifyHandler();
+        return $handler($this->rules, $content);
     }
 }

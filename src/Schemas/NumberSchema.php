@@ -14,7 +14,7 @@ class NumberSchema extends Schema
 
     public function positive(): static
     {
-        $this->rules['positive'] = fn($value) => (int)$value > 0;
+        $this->rules['positive'] = fn($value) => (int)$value >= 0;
         return $this;
     }
 
@@ -28,9 +28,9 @@ class NumberSchema extends Schema
      * @param ?int $content
      * @return bool
      */
-    public function isValid(mixed $content = null): bool
+    public function isValid(?int $content = null): bool
     {
-        $value = is_int($content) ? $content : null;
-        return parent::isValid($value);
+        $handler = $this->verification::getVerifyHandler();
+        return $handler($this->rules, $content);
     }
 }

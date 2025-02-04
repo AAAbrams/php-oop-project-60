@@ -4,18 +4,24 @@ declare(strict_types=1);
 
 namespace Alligator\Schemas;
 
-use Alligator\Interfaces\SchemaInterface;
+use Alligator\Interfaces\VerificationInterface;
+use Alligator\Verifications\DefaultVerification;
 
-abstract class Schema implements SchemaInterface
+abstract class Schema
 {
     /**
-     * @var array<callable>
+     * @var array<string, callable|Schema>
      */
     protected array $rules = [];
 
-    public function isValid(mixed $content = null): bool
+    /**
+     * @template T of VerificationInterface
+     * @var class-string<T>
+     */
+    protected string $verification;
+
+    public function __construct()
     {
-        $test = array_filter($this->rules, fn(callable $rule) => !$rule($content));
-        return empty($test);
+        $this->verification = DefaultVerification::class;
     }
 }

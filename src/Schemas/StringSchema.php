@@ -28,8 +28,10 @@ class StringSchema extends Schema
      * @param ?string $content
      * @return bool
      */
-    public function isValid(mixed $content = null): bool
+    public function isValid(?string $content = null): bool
     {
-        return parent::isValid((string)$content);
+        $handler = $this->verification::getVerifyHandler();
+        return $handler($this->rules, (string)$content);
+        //return parent::isValid((string)$content);
     }
 }
