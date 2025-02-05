@@ -14,7 +14,7 @@ class NumberSchema extends Schema
 
     public function positive(): static
     {
-        $this->rules['positive'] = fn($value) => (int)$value >= 0;
+        $this->rules['positive'] = fn($value) => (int)$value > 0;
         return $this;
     }
 
