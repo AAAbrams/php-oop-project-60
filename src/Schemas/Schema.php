@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Alligator\Schemas;
+namespace Hexlet\Validator\Schemas;
 
-use Alligator\Interfaces\VerificationInterface;
-use Alligator\Support\SchemaRuleExtension;
-use Alligator\Verifications\DefaultVerification;
+use Hexlet\Validator\Interfaces\VerificationInterface;
+use Hexlet\Validator\Support\SchemaRuleExtension;
+use Hexlet\Validator\Verifications\DefaultVerification;
 use Closure;
 use RuntimeException;
 

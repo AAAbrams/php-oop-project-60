@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Alligator\Tests;
+namespace Hexlet\Validator\Tests;
 
-use Alligator\Schemas\ArraySchema;
-use Alligator\Schemas\NumberSchema;
-use Alligator\Schemas\StringSchema;
-use Alligator\Validator;
+use Hexlet\Validator\Schemas\ArraySchema;
+use Hexlet\Validator\Schemas\NumberSchema;
+use Hexlet\Validator\Schemas\StringSchema;
+use Hexlet\Validator\Validator;
 use PHPUnit\Framework\TestCase;
 
 class ValidatorTest extends TestCase
@@ -94,10 +94,10 @@ class ValidatorTest extends TestCase
         $schema->required();
         $this->assertFalse($schema->isValid());
         $this->assertTrue($schema->isValid([]));
-        $this->assertTrue($schema->isValid(['alligator']));
+        $this->assertTrue($schema->isValid(['validator']));
         $schema->sizeof(2);
-        $this->assertFalse($schema->isValid(['alligator']));
-        $this->assertTrue($schema->isValid(['alligator', 'codding']));
+        $this->assertFalse($schema->isValid(['validator']));
+        $this->assertTrue($schema->isValid(['validator', 'codding']));
     }
 
     public function testArrayShapeExtension(): void

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Alligator\Support;
+namespace Hexlet\Validator\Support;
 
-use Alligator\Schemas\Schema;
+use Hexlet\Validator\Schemas\Schema;
 use Closure;
 
 class SchemaRuleDispatcher

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Alligator\Schemas;
+namespace Hexlet\Validator\Schemas;
 
 class NumberSchema extends Schema
 {

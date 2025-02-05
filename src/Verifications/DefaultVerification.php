@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Alligator\Verifications;
+namespace Hexlet\Validator\Verifications;
 
-use Alligator\Interfaces\VerificationInterface;
+use Hexlet\Validator\Interfaces\VerificationInterface;
 use Closure;
 
 class DefaultVerification implements VerificationInterface

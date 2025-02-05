@@ -11,12 +11,12 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Alligator\\": "src"
+            "Hexlet\\Validator\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Alligator\\Tests\\": "tests"
+            "Hexlet\\Validator\\Tests\\": "tests"
         }
     },
     "authors": [

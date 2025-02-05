@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Alligator;
+namespace Hexlet\Validator;
 
-use Alligator\Schemas\ArraySchema;
-use Alligator\Schemas\NumberSchema;
-use Alligator\Schemas\StringSchema;
-use Alligator\Support\SchemaRuleDispatcher;
+use Hexlet\Validator\Schemas\ArraySchema;
+use Hexlet\Validator\Schemas\NumberSchema;
+use Hexlet\Validator\Schemas\StringSchema;
+use Hexlet\Validator\Support\SchemaRuleDispatcher;
 use Closure;
 
 class Validator

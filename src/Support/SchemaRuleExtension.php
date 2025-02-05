@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Alligator\Support;
+namespace Hexlet\Validator\Support;
 
 readonly class SchemaRuleExtension
 {

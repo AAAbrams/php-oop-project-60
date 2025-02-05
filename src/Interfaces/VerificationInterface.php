@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Alligator\Interfaces;
+namespace Hexlet\Validator\Interfaces;
 
 use Closure;
 

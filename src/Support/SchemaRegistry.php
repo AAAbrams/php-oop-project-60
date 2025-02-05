@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Alligator\Support;
+namespace Hexlet\Validator\Support;
 
-use Alligator\Schemas\ArraySchema;
-use Alligator\Schemas\NumberSchema;
-use Alligator\Schemas\StringSchema;
+use Hexlet\Validator\Schemas\ArraySchema;
+use Hexlet\Validator\Schemas\NumberSchema;
+use Hexlet\Validator\Schemas\StringSchema;
 
 enum SchemaRegistry: string
 {
