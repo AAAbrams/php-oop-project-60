@@ -8,7 +8,7 @@ class StringSchema extends Schema
 {
     public function required(): static
     {
-        $this->rules['required'] = fn(string $value): bool => !empty($value);
+        $this->rules['required'] = fn(string $value): bool => mb_strlen($value) !== 0;
         return $this;
     }
 

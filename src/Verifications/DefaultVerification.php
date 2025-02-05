@@ -13,7 +13,7 @@ class DefaultVerification implements VerificationInterface
     {
         return function ($rules, $content): bool {
             $test = array_filter($rules, fn(callable $rule) => !$rule($content));
-            return empty($test);
+            return count($test) === 0;
         };
     }
 }

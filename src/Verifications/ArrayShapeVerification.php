@@ -12,7 +12,7 @@ class ArrayShapeVerification implements VerificationInterface
     public static function getVerifyHandler(): Closure
     {
         return function ($rules, $content): bool {
-            if (empty($rules)) {
+            if (count($rules) === 0) {
                 return true;
             }
 
@@ -22,7 +22,7 @@ class ArrayShapeVerification implements VerificationInterface
                 ARRAY_FILTER_USE_BOTH
             );
 
-            return empty($test);
+            return count($test) === 0;
         };
     }
 }
