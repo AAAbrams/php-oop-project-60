@@ -121,4 +121,23 @@ class ValidatorTest extends TestCase
             $schema->isValid(['name' => 'ada', 'age' => -5])
         );
     }
+
+    public function testMacroFeature(): void
+    {
+        $v = new Validator();
+
+        $v->addValidator('string', 'startWith', fn($value, $start) => str_starts_with($value, $start));
+
+        $schema = $v->string()->test('startWith', 'H');
+
+        $this->assertTrue($schema->isValid('Hexlet'));
+        $this->assertFalse($schema->isValid('exlet'));
+
+        $v->addValidator('number', 'min', fn($value, $min) => $value >= $min);
+
+        $schema = $v->number()->test('min', 5);
+
+        $this->assertTrue($schema->isValid(6));
+        $this->assertFalse($schema->isValid(2));
+    }
 }

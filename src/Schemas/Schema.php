@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace Alligator\Schemas;
 
 use Alligator\Interfaces\VerificationInterface;
+use Alligator\Support\SchemaRuleExtension;
 use Alligator\Verifications\DefaultVerification;
+use Closure;
+use RuntimeException;
 
 abstract class Schema
 {
@@ -20,8 +23,23 @@ abstract class Schema
      */
     protected string $verification;
 
-    public function __construct()
-    {
+    public function __construct(
+        protected array $macroRules = []
+    ) {
         $this->verification = DefaultVerification::class;
+    }
+
+    /**
+     * @param string $ruleName
+     * @param mixed $value
+     * @return SchemaRuleExtension
+     * @throws RuntimeException
+     */
+    public function test(string $ruleName, mixed $value): SchemaRuleExtension
+    {
+        if (isset($this->macroRules[$ruleName]) && $this->macroRules[$ruleName] instanceof Closure) {
+            return new SchemaRuleExtension($this->macroRules[$ruleName], $value);
+        }
+        throw new RuntimeException("There is no rule with name '$ruleName'");
     }
 }
