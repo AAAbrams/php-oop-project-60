@@ -18,6 +18,9 @@ class Validator
         $this->ruleDispatcher = new SchemaRuleDispatcher();
     }
 
+    /**
+     * @return StringSchema
+     */
     public function string(): StringSchema
     {
         return $this->ruleDispatcher->createSchema(StringSchema::class);

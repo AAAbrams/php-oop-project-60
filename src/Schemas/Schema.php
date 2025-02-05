@@ -18,8 +18,7 @@ abstract class Schema
     protected array $rules = [];
 
     /**
-     * @template T of VerificationInterface
-     * @var class-string<T>
+     * @var class-string<VerificationInterface>
      */
     protected string $verification;
 

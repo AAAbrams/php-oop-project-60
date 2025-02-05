@@ -15,8 +15,9 @@ class SchemaRuleDispatcher
     private array $mapping;
 
     /**
-     * @param class-string|string $type
-     * @return Schema
+     * @template T of Schema
+     * @param class-string<T> $type
+     * @return T
      */
     public function createSchema(string $type): Schema
     {

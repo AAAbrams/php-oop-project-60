@@ -15,7 +15,7 @@ enum SchemaRegistry: string
 
     case array = 'array';
 
-    public function getClassName(): ?string
+    public function getClassName(): string
     {
         return match ($this) {
             self::string => StringSchema::class,
